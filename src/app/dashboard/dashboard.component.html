@@ -1,0 +1,8 @@
+<c-card>
+  <c-card-body>
+    <h5 cCardTitle>Card title</h5>
+    <p cCardText>
+      <c-chart [data]="data" type="line" (chartRef)="handleChartRef($event)" />
+    </p>
+  </c-card-body>
+</c-card>

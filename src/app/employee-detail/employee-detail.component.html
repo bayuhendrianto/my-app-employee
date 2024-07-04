@@ -1,0 +1,168 @@
+<form [formGroup]="employeeForm">
+  <div class="container-flex example-container">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        formControlName="userName"
+        placeholder="Username"
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        required
+      />
+      @if (employeeForm.controls['email'].errors?.['pattern']) {
+      <mat-error style="color: red"
+        >Please enter a valid email address</mat-error
+      >
+      }
+    </mat-form-field>
+  </div>
+
+  <div class="container-flex example-container">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        formControlName="firstName"
+        placeholder="First Name"
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        formControlName="lastName"
+        placeholder="Last Name"
+        type="text"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="container-flex example-container">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Birth Date</mat-label>
+      <input
+        matInput
+        formControlName="birthDate"
+        readonly
+        [matDatepicker]="birthDate"
+        [max]="maxDate"
+        placeholder="Tanggal Lahir"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="birthDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #birthDate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Basic Salary</mat-label>
+      <input
+        matInput
+        formControlName="basicSalary"
+        placeholder="Basic Salary"
+        type="tel"
+        prefix="Rp "
+        mask="separator.0"
+        thousandSeparator=","
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="container-flex example-container">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status" name="food">
+        @for (status of statusList; track status) {
+        <mat-option [value]="status.value">{{ status.viewValue }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Group</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="group"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        @for (option of filteredOptions | async; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div class="container-flex example-container">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="5"> </textarea>
+    </mat-form-field>
+  </div>
+
+  <div>
+    @if(pageType === "new") {
+    <button
+      [disabled]="employeeForm.invalid"
+      mat-fab
+      extended
+      style="
+        background-color: #1169dd;
+        color: white;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+        height: 40px;
+        width: 150px;
+      "
+      (click)="addData()"
+    >
+      <mat-icon>save</mat-icon>
+      Add
+    </button>
+
+    } @if(pageType === "edit") {
+    <button
+      [disabled]="employeeForm.invalid || employeeForm.pristine"
+      mat-fab
+      extended
+      style="
+        background-color: #1169dd;
+        color: white;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+        height: 40px;
+        width: 150px;
+      "
+      (click)="saveData()"
+    >
+      <mat-icon>save</mat-icon>
+      Save
+    </button>
+    }
+
+    <button
+      mat-fab
+      extended
+      style="
+        background-color: #f0cd06;
+        color: white;
+        margin-bottom: 1rem;
+        height: 40px;
+        width: 150px;
+      "
+      (click)="goBack()"
+    >
+      <mat-icon>save</mat-icon>
+      Cancel
+    </button>
+  </div>
+</form>

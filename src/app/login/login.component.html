@@ -1,0 +1,114 @@
+<div
+  class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-center"
+>
+  <c-container breakpoint="md">
+    <c-row class="justify-content-center">
+      <c-col lg="10" xl="8">
+        <c-card-group>
+          <c-card class="p-4">
+            <c-card-body>
+              <form [formGroup]="loginForm">
+                <h1>Login</h1>
+                <p class="text-body-secondary">Sign In to your account</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <!-- <svg cIcon name="cilEmail"></svg> -->
+                    <mat-icon
+                      aria-hidden="false"
+                      aria-label="Example home icon"
+                      fontIcon="mail_outline"
+                    ></mat-icon>
+                  </span>
+                  <input
+                    autoComplete="email"
+                    cFormControl
+                    formControlName="email"
+                    placeholder="Email"
+                  />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  @if
+                  (loginForm.controls['email'].invalid&&loginForm.controls['email'].touched)
+                  {
+                  <div>
+                    @if (loginForm.controls['email'].errors?.['pattern']) {
+                    <mat-error style="color: red"
+                      >Please enter a valid email address</mat-error
+                    >
+                    } @if (loginForm.controls['email'].errors?.['required']) {
+                    <mat-error style="color: red"
+                      >Email is <strong>required</strong></mat-error
+                    >
+                    }
+                  </div>
+                  }
+                </c-input-group>
+                <c-input-group class="mb-4">
+                  <span cInputGroupText>
+                    <mat-icon
+                      aria-hidden="false"
+                      aria-label="Example home icon"
+                      fontIcon="lock"
+                    ></mat-icon>
+                  </span>
+                  <input
+                    autoComplete="current-password"
+                    cFormControl
+                    formControlName="password"
+                    placeholder="Password"
+                    type="password"
+                  />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  @if
+                  (loginForm.controls['password'].invalid&&loginForm.controls['password'].touched)
+                  {
+                  <div>
+                    @if (loginForm.controls['password'].errors?.['required']) {
+                    <mat-error style="color: red"
+                      >Password is <strong>required</strong></mat-error
+                    >
+                    }
+                  </div>
+                  }
+                </c-input-group>
+                <c-row>
+                  <c-col xs="6">
+                    <button
+                      cButton
+                      class="px-4"
+                      color="primary"
+                      (click)="login()"
+                      [disabled]="loginForm.invalid"
+                    >
+                      Login
+                    </button>
+                  </c-col>
+                </c-row>
+              </form>
+            </c-card-body>
+          </c-card>
+          <c-card
+            [ngStyle]="{ 'minWidth.%': 44 }"
+            class="text-white bg-primary py-5"
+          >
+            <c-card-body class="text-center">
+              <div>
+                <h2>Employee Management Apps</h2>
+                <br />
+                <h5>
+                  To be able to access the application, you can use a demo
+                  account.
+                </h5>
+                <div>
+                  <div>Email: {{ account.email }}</div>
+                  <div>Password: {{ account.password }}</div>
+                </div>
+              </div>
+            </c-card-body>
+          </c-card>
+        </c-card-group>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>
