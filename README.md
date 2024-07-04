@@ -1,27 +1,21 @@
-# MyAppEmployee
+# my-app-employee
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Getting started
 
-## Code scaffolding
+Note : before starting, make sure you have NodeJS and Angular CLI installed. If you haven't installed NodeJS, you can install [Node JS](https://nodejs.org/en/download/prebuilt-installer), and install [Angular CLI](https://angular.dev/tools/cli/setup-local).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+1. Clone code
+2. Running program with following command :
+```
+npm install
+```
+3. After install package successfully, now you can start program with command :
+```
+ng serve
+```
+4. Open your favorite browser and type http://localhost:4200
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
